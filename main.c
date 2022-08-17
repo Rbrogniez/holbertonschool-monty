@@ -1,11 +1,6 @@
 #include "monty.h"
 
 /**
- * main - Read Monty byte code files
- *
- * @ac: Number of arguments
- * @av: Arguements
- * Return: 0
  */
 
 int main(int ac, char **av)
