@@ -1,7 +1,8 @@
 #include "monty.h"
 
 /**
- */
+* main -
+*/
 
 int main(int ac, char **av)
 {
