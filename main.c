@@ -38,6 +38,7 @@ int main(int ac, char **av)
 	FILE *file;
 	char* word;
 	int j;
+	char line[256];
 	unsigned int linenum = 0;
 	instruction_t structfonc[6];
 	stack_t *head = NULL;
@@ -54,13 +55,13 @@ int main(int ac, char **av)
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (fgets(globline, sizeof(globline), file) != NULL)
+	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		linenum++;
-		word = strtok(globline, " \n");
+		word = strtok(line, " \n");
 		for (j = 0; j < 6; j++)
 		{
-			if (strcmp(word, structfonc[j].opcode) == 0)
+			if (word && strcmp(word, structfonc[j].opcode) == 0)
 				structfonc[j].f(&head,linenum);
 		}
 	}
