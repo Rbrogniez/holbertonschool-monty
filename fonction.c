@@ -60,8 +60,6 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 	if (0)
 		printf("%d", line_number);
-
-
 }
 /**
  * pint - prints top of stack
@@ -72,5 +70,10 @@ void pall(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	printf("%d%p", line_number, (void *)stack);
+	if (!(*stack))
+	{
+		printf("L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }

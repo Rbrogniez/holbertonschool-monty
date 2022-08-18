@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+
 /**
  * pop - remove top element of stack
  *
@@ -11,8 +13,22 @@
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	printf("%d%p", line_number, (void *)stack);
+	stack_t *tmp = *stack;
+
+	if (!(*stack))
+	{
+		printf("L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = (*stack)->next;
+	free(tmp);
+	if (*stack)
+	{
+		(*stack)->prev = NULL;
+	}
 }
+
+
 /**
  * swap - swaps top 2 elements of stack
  *
@@ -22,8 +38,19 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	printf("%d%p", line_number, (void *)stack);
+	int n;
+
+	if (!(*stack) || !(*stack)->next)
+	{
+		printf("L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = n;
 }
+
+
 /**
  * add - add the top 2 elements of stack
  *
@@ -33,8 +60,16 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	printf("%d%p", line_number, (void *)stack);
+	if (!(*stack) || !(*stack)->next)
+	{
+		printf("L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	(*stack)->next->n += (*stack)->n;
+	pop(stack, line_number);
 }
+
+
 /**
  * nop - does nothing
  *
@@ -44,5 +79,6 @@ void add(stack_t **stack, unsigned int line_number)
  */
 void nop(stack_t **stack, unsigned int line_number)
 {
-	printf("%d%p", line_number, (void *)stack);
+	if (0)
+		printf("%d%p", line_number, (void *)stack);
 }
