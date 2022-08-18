@@ -1,5 +1,8 @@
 #ifndef HEADER
 #define HEADER
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
