@@ -57,6 +57,7 @@ void push(stack_t **stack, unsigned int line_number)
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
+
 	while (tmp)
 	{
 		printf("%d\n",tmp->n);
@@ -69,21 +70,17 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 void pint(stack_t **stack, unsigned int line_number)
 {
-	if(0)
-		printf("%d%p",line_number,(void *)stack);
+	printf("%d%p",line_number,(void *)stack);
 }
 void pop(stack_t **stack, unsigned int line_number)
 {
-	if(0)
-		printf("%d%p",line_number,(void *)stack);
+	printf("%d%p",line_number,(void *)stack);
 }
 void add(stack_t **stack, unsigned int line_number)
 {
-	if(0)
-		printf("%d%p",line_number,(void *)stack);
+	printf("%d%p",line_number,(void *)stack);
 }
 void nop(stack_t **stack, unsigned int line_number)
 {
-	if(0)
-		printf("%d%p",line_number,(void *)stack);
+	printf("%d%p",line_number,(void *)stack);
 }
