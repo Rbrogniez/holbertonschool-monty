@@ -1,21 +1,24 @@
 #include "monty.h"
 
+instruction_t* initfonc()
+{
+instruction_t *structfonc[8] = malloc (sizeof(instruction_t) * 8);
+structfonc[0] ->
+}
+
 /**
 * main -
 */
-
-void push(stack_t **stack, unsigned int line_number)
-
-{
-printf ("push réussit ligne: %d %p \n ", line_number,(void*)stack);
-}
 
 
 int main(int ac, char **av)
 {
 	FILE *file;
 
+	int i;
 
+	instruction_t structfonc [8];
+	structfonc = initfonc();
 
 	if (ac != 2)
 	{
@@ -35,5 +38,8 @@ int main(int ac, char **av)
 
 
 	fclose(file);
+	for (i = 0 ; i < 8; i++)
+	free(structfonc[i])
 	return (EXIT_SUCCESS);
 }
+
