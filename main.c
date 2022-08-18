@@ -74,7 +74,15 @@ int main(int ac, char **av)
 		for (j = 0; j < 6; j++)
 		{
 			if (word && strcmp(word, structfonc[j].opcode) == 0)
+			{
 				structfonc[j].f(&head, linenum);
+				break;
+			}
+		}
+		if (word && j > 5)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", linenum, word);
+			exit(EXIT_FAILURE);
 		}
 	}
 	freeStack(&head);
