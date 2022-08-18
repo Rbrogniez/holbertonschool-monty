@@ -21,13 +21,13 @@ void push(stack_t **stack, unsigned int line_number)
 	word = strtok(NULL, " \n");
 	if (!word)
 	{
-		printf("L%d: usage: push integer\n",line_number);
+		fprintf(stderr, "L%d: usage: push integer\n",line_number);
 		exit(EXIT_FAILURE);
 	}
 	num = atoi(word);
 	if (!num && word[0] != '0')
 	{
-		printf("L%d: usage: push integer\n",line_number);
+		fprintf(stderr, "L%d: usage: push integer\n",line_number);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
