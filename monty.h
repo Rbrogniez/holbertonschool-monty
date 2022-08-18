@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <stdio.h>
 
+void push(stack_t **stack, unsigned int line_number);
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,6 +37,6 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern FILE *filename;
+char globline[256];
 
 #endif /* HEADER */
