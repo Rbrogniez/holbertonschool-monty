@@ -58,7 +58,7 @@ int main(int ac, char **av)
 	char *word;
 	char line[256];
 	unsigned int linenum = 0, j;
-	instruction_t structfonc[6];
+	instruction_t structfonc[10];
 	stack_t *head = NULL;
 
 	initfonc(structfonc);
