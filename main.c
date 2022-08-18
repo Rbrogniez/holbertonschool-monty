@@ -36,7 +36,8 @@ void initfonc(instruction_t *structfonc)
 int main(int ac, char **av)
 {
 	FILE *file;
-	int i,j;
+	char* word;
+	int j;
 	unsigned int linenum = 0;
 	instruction_t structfonc[6];
 	stack_t *head = NULL;
@@ -56,19 +57,11 @@ int main(int ac, char **av)
 	while (fgets(globline, sizeof(globline), file) != NULL)
 	{
 		linenum++;
-		for (i = 0; i < 256 && globline[i]; i ++)
+		word = strtok(globline, " \n");
+		for (j = 0; j < 6; j++)
 		{
-			if (globline[i] == ' ' || globline[i] == '\n')
-				globline[i] = '\0';
-		}
-		for (i = 0; i < 256 && globline[i]; i ++)
-		{
-			for (j = 0; j < 6; j++)
-			{
-				if (strcmp(globline + i, structfonc[j].opcode) == 0)
-					structfonc[j].f(&head,linenum);
-			}
-			i++;
+			if (strcmp(word, structfonc[j].opcode) == 0)
+				structfonc[j].f(&head,linenum);
 		}
 	}
 

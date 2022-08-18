@@ -12,28 +12,20 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	int i, num;
+	int num;
 	stack_t *new;
 	stack_t *tmp;
+	char* word;
 
 	tmp = *stack;
-	for (i = 0; i < 256 && globline[i]; i ++)
+	word = strtok(NULL, " \n");
+	if (!word)
 	{
-		if (strcmp(globline + i, "push") == 0)
-		{
-			i += 4;
-			while(!globline[i])
-				i++;
-			num = atoi(globline + i);
-			if (!num && globline[i] != '0')
-			{
-				printf("L%d: usage: push integer\n",line_number);
-				exit(EXIT_FAILURE);
-			}
-		}
-		i++;
+		printf("L%d: usage: push integer\n",line_number);
+		exit(EXIT_FAILURE);
 	}
-	if (i == 256)
+	num = atoi(word);
+	if (!num && word[0] != '0')
 	{
 		printf("L%d: usage: push integer\n",line_number);
 		exit(EXIT_FAILURE);
