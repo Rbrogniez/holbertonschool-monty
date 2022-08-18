@@ -28,11 +28,13 @@ instruction_t** initfonc()
 int main(int ac, char **av)
 {
 	FILE *file;
-	int i, linenum = 0;
+	int i,j;
+	unsigned int linenum = 0;
 	char line[256];
 	instruction_t *structfonc[6];
 
 	structfonc = initfonc();
+	stack_t *head = NULL;
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -47,12 +49,23 @@ int main(int ac, char **av)
 	while (fgets(globline, sizeof(globline), file) != NULL)
 	{
 		linenum++;
-		
-
-		
+		for (i = 0; i < 256 && globline[i]; i ++)
+		{
+			if (globline[i] == ' ')
+				globline[i] = '\0';
+		}
+		for (i = 0; i < 256 && globline[i]; i ++)
+		{
+			for (j = 0; j < 6; j++)
+			{
+				if (strcmp(globline + i, structfonc[j]->opcode) == 0)
+					structfonc[j]->f(&head,linenum*);
+			}
+			i++;
+	}
 
 	fclose(file);
-	for (i = 0 ; i < 8; i++)
+	for (i = 0 ; i < 6; i++)
 		free(structfonc[i]);
 	return (EXIT_SUCCESS);
 }

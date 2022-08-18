@@ -6,7 +6,7 @@ FILE *file;
 
 /**
  * push - pushes element to the stack
- * 
+ *
  * @line_number: line in file "filename"
  * Return: void
  */
@@ -16,13 +16,8 @@ void push(stack_t **stack, unsigned int line_number)
 	int i, num;
 	stack_t *new;
 	stack_t *tmp;
-	
+
 	tmp = *stack;
-	for (i = 0; i < 256 && globline[i]; i ++)
-	{
-		if (globline[i] == ' ')
-			globline[i] = '\0';
-	}
 	for (i = 0; i < 256 && globline[i]; i ++)
 	{
 		if (strcmp(globline + i, "push") == 0)
@@ -55,7 +50,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 /**
  * pall - prints all ellements in stack
- * 
+ *
  * @line_number: line in file "filename"
  * Return: void
  */
