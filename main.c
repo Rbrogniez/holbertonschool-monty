@@ -1,12 +1,8 @@
 #include "monty.h"
 
 /**
- * main - Read Monty byte code files
- *
- * @ac: Number of arguments
- * @av: Arguements
- * Return: 0
- */
+* main -
+*/
 
 void push(stack_t **stack, unsigned int line_number)
 
