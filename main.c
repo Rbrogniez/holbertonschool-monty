@@ -4,8 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-
+/**
+ * freeStack - frees a stack
+ * @stack: stack to free
+ * Return: void
+ */
 void freeStack(stack_t **stack)
 {
 	stack_t *tmp = *stack;
@@ -18,6 +21,11 @@ void freeStack(stack_t **stack)
 	free(tmp);
 }
 
+/**
+ * initfonc - initialises the function/command array
+ * @structfonc: array to initialise
+ * Return: void
+ */
 void initfonc(instruction_t *structfonc)
 {
 	structfonc[0].opcode = "push";
@@ -32,6 +40,8 @@ void initfonc(instruction_t *structfonc)
 	structfonc[4].f = add;
 	structfonc[5].opcode = "nop";
 	structfonc[5].f = nop;
+	structfonc[6].opcode = "swap";
+	structfonc[6].f = swap;
 }
 
 /**
@@ -46,9 +56,8 @@ int main(int ac, char **av)
 {
 	FILE *file;
 	char *word;
-	int j;
 	char line[256];
-	unsigned int linenum = 0;
+	unsigned int linenum = 0, j;
 	instruction_t structfonc[6];
 	stack_t *head = NULL;
 
@@ -68,7 +77,7 @@ int main(int ac, char **av)
 	{
 		linenum++;
 		word = strtok(line, " \n");
-		for (j = 0; j < 6; j++)
+		for (j = 0; j < 7; j++)
 		{
 			if (word && strcmp(word, structfonc[j].opcode) == 0)
 			{
@@ -76,7 +85,7 @@ int main(int ac, char **av)
 				break;
 			}
 		}
-		if (word && j > 5)
+		if (word && j >= 7)
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", linenum, word);
 			exit(EXIT_FAILURE);

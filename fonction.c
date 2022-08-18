@@ -7,6 +7,7 @@
  * push - pushes element to the stack
  *
  * @line_number: line in file "filename"
+ * @stack: the stack to change
  * Return: void
  */
 
@@ -44,6 +45,7 @@ void push(stack_t **stack, unsigned int line_number)
  * pall - prints all ellements in stack
  *
  * @line_number: line in file "filename"
+ * @stack: the stack to change
  * Return: void
  */
 
@@ -61,6 +63,13 @@ void pall(stack_t **stack, unsigned int line_number)
 
 
 }
+/**
+ * pint - prints top of stack
+ *
+ * @line_number: line in file "filename"
+ * @stack: the stack to change
+ * Return: void
+ */
 void pint(stack_t **stack, unsigned int line_number)
 {
 	printf("%d%p", line_number, (void *)stack);
