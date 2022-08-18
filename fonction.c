@@ -62,7 +62,7 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 void pint(stack_t **stack, unsigned int line_number)
 {
-	printf("%d%p", ine_number, (void *)stack);
+	printf("%d%p", line_number, (void *)stack);
 }
 void pop(stack_t **stack, unsigned int line_number)
 {
