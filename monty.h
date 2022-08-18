@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void push(stack_t **stack, unsigned int line_number);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,6 +36,13 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+void push(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 char globline[256];
 
 #endif /* HEADER */

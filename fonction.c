@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-FILE *file;
 
 /**
  * push - pushes element to the stack
@@ -68,15 +67,23 @@ void pall(stack_t **stack, unsigned int line_number)
 
 
 }
-int main()
+void pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = NULL;
-
-	file = fopen("test","r");
-	push(&head, 1);
-	push(&head, 2);
-	pall(&head, 3);
-
-	fclose(file);
-	return (0);
+	if(0)
+		printf("%d%p",line_number,(void *)stack);
+}
+void pop(stack_t **stack, unsigned int line_number)
+{
+	if(0)
+		printf("%d%p",line_number,(void *)stack);
+}
+void add(stack_t **stack, unsigned int line_number)
+{
+	if(0)
+		printf("%d%p",line_number,(void *)stack);
+}
+void nop(stack_t **stack, unsigned int line_number)
+{
+	if(0)
+		printf("%d%p",line_number,(void *)stack);
 }

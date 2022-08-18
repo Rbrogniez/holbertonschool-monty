@@ -1,7 +1,10 @@
 #include "monty.h"
-instruction_t** initfonc()
+#include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+void initfonc(instruction_t *structfonc[6])
 {
-	instruction_t *structfonc[6];
 	structfonc[0]->opcode = "push";
 	structfonc[0]->f = push;
 	structfonc[1]->opcode = "pall";
@@ -14,7 +17,6 @@ instruction_t** initfonc()
 	structfonc[4]->f = add;
 	structfonc[5]->opcode = "nop";
 	structfonc[5]->f = nop;
-	return (structfonc);
 }
 
 /**
@@ -30,11 +32,10 @@ int main(int ac, char **av)
 	FILE *file;
 	int i,j;
 	unsigned int linenum = 0;
-	char line[256];
 	instruction_t *structfonc[6];
-
-	structfonc = initfonc();
 	stack_t *head = NULL;
+
+	initfonc(structfonc);
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -59,9 +60,10 @@ int main(int ac, char **av)
 			for (j = 0; j < 6; j++)
 			{
 				if (strcmp(globline + i, structfonc[j]->opcode) == 0)
-					structfonc[j]->f(&head,linenum*);
+					structfonc[j]->f(&head,linenum);
 			}
 			i++;
+		}
 	}
 
 	fclose(file);
