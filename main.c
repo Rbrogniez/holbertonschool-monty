@@ -4,10 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void nop(stack_t **stack, unsigned int line_number)
-{
-	printf("%d%p", line_number, (void *)stack);
-}
+
 
 void freeStack(stack_t **stack)
 {

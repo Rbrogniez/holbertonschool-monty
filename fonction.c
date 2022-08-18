@@ -16,6 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	stack_t *tmp;
 	char *word;
+	char *ptr;
 
 	tmp = *stack;
 	word = strtok(NULL, " \n");
@@ -24,8 +25,8 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	num = atoi(word);
-	if (!num && word[0] != '0')
+	num = strtol(word, &ptr, 10);
+	if (ptr[0] != 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -61,14 +62,6 @@ void pall(stack_t **stack, unsigned int line_number)
 
 }
 void pint(stack_t **stack, unsigned int line_number)
-{
-	printf("%d%p", line_number, (void *)stack);
-}
-void pop(stack_t **stack, unsigned int line_number)
-{
-	printf("%d%p", line_number, (void *)stack);
-}
-void add(stack_t **stack, unsigned int line_number)
 {
 	printf("%d%p", line_number, (void *)stack);
 }
